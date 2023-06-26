@@ -186,9 +186,9 @@ if(gameState === 2){
   keyWeapon.rotation = -45;
   keyWeapon.velocityX = 3;
   rectangle = createSprite(keyWeapon.x+5, keyWeapon.y+6, 10, 140);
-  rectangle.visible = true;
+  rectangle.visible = false;
   square = createSprite(keyWeapon.x+8, keyWeapon.y-40, 60, 40);
-  square.visible = true;
+  square.visible = false;
 
 // fire Ring
   fireRing = createSprite(keyWeapon.x-2, keyWeapon.y+20);
