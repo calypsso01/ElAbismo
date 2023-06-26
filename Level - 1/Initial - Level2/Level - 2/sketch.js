@@ -914,7 +914,7 @@ function gameEnd2(){
   shootFireGroup2 = new Group();
 
       gameOver = createElement('h1', 'GAME OVER');
-      gameOver.position(100, height/2-350);
+      gameOver.position(100, height/12);
       gameOver.class('resetText'); 
       gameOver.hide();
       
@@ -925,7 +925,7 @@ function gameEnd2(){
     
       // button for end gameState 
       retryBtn = createButton("Retry");
-      retryBtn.position(215, height/2-60);
+      retryBtn.position(215, height/2);
       retryBtn.class('button');
       retryBtn.hide();
       retryBtn.mouseClicked(()=>{
@@ -935,7 +935,7 @@ function gameEnd2(){
       });   
     
       restartBtn = createButton("Restart");
-      restartBtn.position(500, height/2-60);
+      restartBtn.position(500, height/2);
       restartBtn.class('button');
       restartBtn.hide();
       restartBtn.mouseClicked(()=>{
@@ -944,7 +944,7 @@ function gameEnd2(){
         close();
       });   
     
-      share = createElement('h2','Would you like to challenge this game to someone?');
+      /*share = createElement('h2','Would you like to challenge this game to someone?');
       share.position(105, height/2+90);
       share.class('share');
       share.hide();
@@ -958,10 +958,10 @@ function gameEnd2(){
       copyshare = createElement('h1','Copy & Share');
       copyshare.position(210, height/2+142+70);
       copyshare.class('copyShare');
-      copyshare.hide();
+      copyshare.hide();*/
     
-      const val = copyInput.value();
-      console.log(val)
+      //const val = copyInput.value();
+      //console.log(val)
     
 }
 function design_shoot(){
@@ -1011,9 +1011,9 @@ function game_end_2(){
   //signature.show();
   retryBtn.show();
   restartBtn.show();
-  share.show();
-  copyInput.show();
-  copyshare.show();
+  //share.show();
+  //copyInput.show();
+  //copyshare.show();
   signature1.show();
 
 }

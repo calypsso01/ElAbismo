@@ -118,9 +118,9 @@ function setup() {
   ground3.visible = false;
 
   // create walls 
-    left_wall = createSprite(0, height/2, 20, height);
+    left_wall = createSprite(0, height/2, 20, height*8);
     left_wall.visible = false;
-    right_wall = createSprite(width, height/2, 20, height);
+    right_wall = createSprite(width, height/2, 20, height*8);
     right_wall.visible = false;
 
   signature1 = createElement('h2', 'by Swagatika');
@@ -178,21 +178,22 @@ if(gameState === 2){
   }
 
 // key weapon 
-  keyWeapon = createSprite(width/2, steps2[steps2.length-1].y - 245);
+  keyWeapon = createSprite(width/2, steps2[steps2.length-1].y-150);
   keyWeapon.addImage(keyWeaponImg);
   keyWeapon.debug = false;
   keyWeapon.setCollider("obb", 0, 0)
-  keyWeapon.scale = 0.1;
+  keyWeapon.scale = 0.13;
   keyWeapon.rotation = -45;
-  rectangle = createSprite(keyWeapon.x, keyWeapon.y+6, 10, 110);
-  rectangle.visible = false;
-  square = createSprite(keyWeapon.x, keyWeapon.y-30, 50, 30);
-  square.visible = false;
+  keyWeapon.velocityX = 3;
+  rectangle = createSprite(keyWeapon.x+5, keyWeapon.y+6, 10, 140);
+  rectangle.visible = true;
+  square = createSprite(keyWeapon.x+8, keyWeapon.y-40, 60, 40);
+  square.visible = true;
 
 // fire Ring
   fireRing = createSprite(keyWeapon.x-2, keyWeapon.y+20);
   fireRing.addImage(fireRingImg);
-  fireRing.scale = 0.1;
+  fireRing.scale = 0.135;
   fireRing.debug = false ;
   fireRing.setCollider("circle", 0, 0, 220);
   keyWeapon.depth = fireRing.depth + 1;
@@ -258,10 +259,10 @@ function draw() {
   }
 
   // draw sprites
-   push ();
-   fill(200,192, 203, 70);
-   drawSprites();
-   pop ();
+  push ();
+  fill(200,192, 203, 70);
+  drawSprites();
+  pop ();
 }
 
 function play_level_2(){
@@ -290,7 +291,7 @@ function play_level_2(){
       lifes[i].rotation += 7;
       lifesV[i].rotation -= 7;
     }
-   if(thor2.isTouching(lifes[i])){
+  if(thor2.isTouching(lifes[i])){
     lifeTouch.play();
     lifes[i].destroy();
     lifeTime +=1;
@@ -348,9 +349,6 @@ function play_level_2(){
       setTimeout(() => {
         numArray[i]=0;
       }, 2000);
-
-     
-  
   }
   
 // animation for sword
@@ -363,6 +361,16 @@ function play_level_2(){
   thorShield.display(140, 225, 220, 255);
   thorShield.x = thor2.x ;
   thorShield.y = thor2.y - 5 ;
+
+// move keyWeapon
+if(keyWeapon.x > width - 150)
+  keyWeapon.velocityX = -3;
+else if(keyWeapon.x < 150)
+  keyWeapon.velocityX = 3;
+rectangle.velocityX = keyWeapon.velocityX;
+square.velocityX = keyWeapon.velocityX;
+fireRing.velocityX = keyWeapon.velocityX;
+
 
 // move steps
   for(i = 0; i< steps1.length; i++){
@@ -428,11 +436,9 @@ function play_level_2(){
           shoot_fire(width+100, steps1[i].y - 30, fireShootImg2, 0.1, -30);
       }
 
-       if(!thor2.isTouching(steps1) && !thor2.isTouching(steps2)){
-          thor2.velocityX = 0;    }
-      
-    
-
+      if(!thor2.isTouching(steps1) && !thor2.isTouching(steps2)){
+        thor2.velocityX = 0;    
+      }
   }
 
   // lifeTime decrease 
@@ -456,7 +462,6 @@ function play_level_2(){
           thor2.x = steps2[6].x;
           thor2.y = steps2[6].y - 30;
         };
-          
       }
       setTimeout(() => {
         change = false;
@@ -473,23 +478,23 @@ function play_level_2(){
 
   // move thor 
      //gravity to thor
-  //thor2.velocityY += 0.5;
+  thor2.velocityY += 0.5;
   
     // thor collide
   thor2.collide(startPoint);
   thor2.collide(ground);
 
   if(keyDown(LEFT_ARROW)){
-    thor2.x -=5;
+    thor2.x -=6;
     thor2.changeImage('thorLeft');
     }
   if(keyDown(RIGHT_ARROW)){
-    thor2.x +=5;
+    thor2.x +=6;
     thor2.changeImage('thorRight');
   }
   if(keyDown(32)){
     //thor2.y -=6.578;
-    thor2.y -=9.5;
+    thor2.y -=10;
 
   }
   if(thor2.y<=steps1[3].y-10)
@@ -515,7 +520,7 @@ function play_level_2(){
         music.stop();
     }music1 = false;
   }
-  if(thor2.isTouching(fireRing)){
+/*if(thor2.isTouching(fireRing)){
       gameState = GAME_END2;
       if(music1){
         dragonFire.play();
@@ -536,8 +541,9 @@ function play_level_2(){
           music.stop();
         }music1 = false;
       }, 100);
-    }
-  let x = lifeEnd - lifeTime 
+  }*/
+
+  let x = lifeEnd - lifeTime;
     if(x >=1){
       gameState = GAME_END2;
       if(music1){
@@ -555,29 +561,27 @@ if(thor2.isTouching(rectangle)||thor2.isTouching(square)){
   close();
 }
 
-    
-  
 }
     function shoot_fire(x, y, image, scale, velocity){
       if(frameCount %180 === 0){
-      shoot = createSprite (x , y) ;
-      shoot.addImage(image) ;
-      shoot.scale = scale ;
+      shoot = createSprite (x , y);
+      shoot.addImage(image);
+      shoot.scale = scale;
       shoot.debug = false;
-      shoot.setCollider("circle", 0, 0, 30)
+      shoot.setCollider("circle", 0, 0, 30);
       
       shoot.velocityX = velocity ;
       shoot.lifetime = 350 ;
       shootFireGroup.add(shoot) ;
       }
     }
-    
+
 function gameEnd2(){ 
 
   shootFireGroup2 = new Group();
 
   gameOver = createElement('h1', 'GAME OVER');
-  gameOver.position(100, height/2-350);
+  gameOver.position(100, height/12);
   gameOver.class('resetText'); 
   gameOver.hide();
   
@@ -588,7 +592,7 @@ function gameEnd2(){
 
   // button for end gameState 
   retryBtn = createButton("Retry");
-  retryBtn.position(215, height/2-60);
+  retryBtn.position(215, height/2);
   retryBtn.class('button');
   retryBtn.hide();
   retryBtn.mouseClicked(()=>{
@@ -596,7 +600,7 @@ function gameEnd2(){
   });   
 
   restartBtn = createButton("Restart");
-  restartBtn.position(500, height/2-60);
+  restartBtn.position(500, height/2);
   restartBtn.class('button');
   restartBtn.hide();
   restartBtn.mouseClicked(()=>{
@@ -604,7 +608,7 @@ function gameEnd2(){
     close();
   });   
 
-  share = createElement('h2','Would you like to challenge this game to someone?');
+  /*share = createElement('h2','Would you like to challenge this game to someone?');
   share.position(105, height/2+90);
   share.class('share');
   share.hide();
@@ -618,11 +622,7 @@ function gameEnd2(){
   copyshare = createElement('h1','Copy & Share');
   copyshare.position(210, height/2+142+70);
   copyshare.class('copyShare');
-  copyshare.hide();
-
-  // const val = copyInput.value();
-  // console.log(val)
-
+  copyshare.hide();*/
 }
   function design_shoot(){
     if(frameCount %120 === 0){
@@ -670,9 +670,9 @@ function game_end_2(){
   //signature.show();
   retryBtn.show();
   restartBtn.show();
-  share.show();
-  copyInput.show();
-  copyshare.show();
+  //share.show();
+  //copyInput.show();
+  //copyshare.show();
   signature1.show();
 
 }
