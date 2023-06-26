@@ -604,7 +604,7 @@ function gameEnd2(){
   restartBtn.class('button');
   restartBtn.hide();
   restartBtn.mouseClicked(()=>{
-    window.open("https://swagatika244.github.io/Initial.github.io/");
+    window.open("https://swag3009.github.io/Abyss/");
     close();
   });   
 

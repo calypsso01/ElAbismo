@@ -940,7 +940,7 @@ function gameEnd2(){
       restartBtn.hide();
       restartBtn.mouseClicked(()=>{
         click.play();
-        window.open("https://swagatika244.github.io/Initial-2.github.io/");
+        window.open("https://swag3009.github.io/Abyss/");
         close();
       });   
     
