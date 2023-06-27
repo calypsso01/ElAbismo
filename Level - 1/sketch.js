@@ -626,7 +626,7 @@ function gameEnd2(){
 }
   function design_shoot(){
     if(frameCount %120 === 0){
-      shoot2 = createSprite (-10 , 152) ;
+      shoot2 = createSprite (-10 , gameOver.y+145) ;
       shoot2.addImage(fireShootImg1) ;
       shoot2.scale = 0.1 ;
       shoot2.debug = false;
