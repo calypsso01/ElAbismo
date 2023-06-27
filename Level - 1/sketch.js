@@ -494,7 +494,7 @@ fireRing.velocityX = keyWeapon.velocityX;
   }
   if(keyDown(32)){
     //thor2.y -=6.578;
-    thor2.y -=11;
+    thor2.y -=10.5;
 
   }
   if(thor2.y<=steps1[3].y-10)
