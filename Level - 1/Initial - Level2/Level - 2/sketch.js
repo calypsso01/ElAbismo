@@ -192,7 +192,7 @@ shootFireGroup = new Group();
     steps.push(step);
     randVelocity = random(-3, 3);
   }
-  console.log(height - steps[6].y)
+  console.log('jjjjjjjjjjjjjjjjjjjjjjjjjj',height - steps[6].y)
 // create death 
   for (var i = 0; i < steps.length; i++){
     // create invisible steps to collide
@@ -791,7 +791,7 @@ if(weapons[6].x === width - 50){
 }
   if(deathFeedbacks[6].visible){
     window.open("Winning page/index.html");
-    close();
+    window.close();
   }
 
   // move thor 
@@ -941,7 +941,7 @@ function gameEnd2(){
       restartBtn.mouseClicked(()=>{
         click.play();
         window.open("https://swag3009.github.io/Abyss/");
-        close();
+        window.close();
       });   
     
       /*share = createElement('h2','Would you like to challenge this game to someone?');
@@ -966,7 +966,7 @@ function gameEnd2(){
 }
 function design_shoot(){
   if(frameCount %120 === 0){
-    shoot2 = createSprite (-10 , 152) ;
+    shoot2 = createSprite (-10 , gameOver.y+145) ;
     shoot2.addImage(deathRingImg) ;
     shoot2.scale = 0.1 ;
     shoot2.debug = false;

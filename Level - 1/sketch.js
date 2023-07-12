@@ -133,7 +133,7 @@ function setup() {
   
 if(gameState === 2){
 
-  //musicPlay();
+  musicPlay();
   
   // beginning start point 
   startPoint = createSprite(100, height -10, 200, 20);
@@ -492,6 +492,9 @@ fireRing.velocityX = keyWeapon.velocityX;
     thor2.x +=6;
     thor2.changeImage('thorRight');
   }
+  // if(keyDown(DOWN_ARROW)){
+  //   thor2.y +=6.578
+  // }
   if(keyDown(32)){
     //thor2.y -=6.578;
     thor2.y -=10.5;
@@ -505,9 +508,7 @@ fireRing.velocityX = keyWeapon.velocityX;
   if(thor2.y<=steps2[6].y-10)
     camera.y = windowHeight - (height+height*1.355);
 
-  if(keyDown(DOWN_ARROW)){
-    thor2.y +=6.578
-  }
+  
 
   // game over 
   if(thor2.isTouching(ground3)){
@@ -557,8 +558,8 @@ fireRing.velocityX = keyWeapon.velocityX;
 
 // win state 
 if(thor2.isTouching(rectangle)||thor2.isTouching(square)){
-  window.open("Initial - Level2/index.html");
-  close();
+  window.open("Initial - Level2/index.html", "_blank");
+  window.close();
 }
 
 }
@@ -605,7 +606,7 @@ function gameEnd2(){
   restartBtn.hide();
   restartBtn.mouseClicked(()=>{
     window.open("https://swag3009.github.io/Abyss/");
-    close();
+    window.close();
   });   
 
   /*share = createElement('h2','Would you like to challenge this game to someone?');

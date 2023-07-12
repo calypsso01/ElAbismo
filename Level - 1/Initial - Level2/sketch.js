@@ -252,7 +252,7 @@ function state_2_setup(){
     startBtn.mouseClicked(()=>{
       click.play();
       window.open("Level - 2/index.html");
-      close();
+      window.close();
     })
     startBtn.hide();
   

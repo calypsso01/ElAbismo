@@ -332,7 +332,7 @@ function state_2_setup(){
     startBtn.mouseClicked(()=>{
       click.play();
       window.open("Level - 1/index.html");
-      close();
+      window.close();
     })
     startBtn.hide();
   
