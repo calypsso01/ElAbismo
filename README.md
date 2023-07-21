@@ -9,7 +9,7 @@ This is a 2D game, created using JavaScript, HTML, CSS, and p5 libraries.
 Alux has left on the quest to the land of Druids, to his mother. To know how is he a druid? What are his powers? Why doesn't he has any control over them? Many questions and one destination. But before entering the land of Druids, he has to go through Abyss... He got to enter it alive , and defeat his seven deaths to enter the land of druids. Remember, it is neither facile nor forlorn, and either way you are right.
 
 
-#### 🔗 [Game Link](https://swag3009.github.io/Abyss/){:target="_blank" rel="noopener"}
+#### 🔗  <a href = "https://swag3009.github.io/Abyss/">Game Link - Abyss</a>
 
 
 ## Screenshots
